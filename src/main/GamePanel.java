@@ -1,44 +1,47 @@
 package main;
 
+import java.awt.Graphics;
+
+import javax.swing.JPanel;
+
 import inputs.KeyboardInputs;
 import inputs.MouseInputs;
 
-import javax.swing.*;
-import java.awt.*;
-
 public class GamePanel extends JPanel {
 
-    private int xDelta = 100;
-    private int yDelta = 100;
     private MouseInputs mouseInputs;
+    private int xDelta = 100, yDelta = 100;
 
     public GamePanel() {
+
         mouseInputs = new MouseInputs(this);
+        addKeyListener(new KeyboardInputs(this));
         addMouseListener(mouseInputs);
         addMouseMotionListener(mouseInputs);
-        addKeyListener(new KeyboardInputs(this));
+
     }
 
-    public void changeXDelta(int value){
-        xDelta += value;
+    public void changeXDelta(int value) {
+        this.xDelta += value;
         repaint();
     }
 
-    public void changeYDelta(int value){
-        yDelta += value;
+    public void changeYDelta(int value) {
+        this.yDelta += value;
         repaint();
     }
 
-    public void setRectPos(int x, int y){
-        xDelta += x;
-        yDelta += y;
+    public void setRectPos(int x, int y) {
+        this.xDelta = x;
+        this.yDelta = y;
         repaint();
     }
 
-    @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.fillRect(xDelta,  yDelta, 200, 50);
+
+        g.fillRect(xDelta, yDelta, 200, 50);
 
     }
+
 }
