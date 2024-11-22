@@ -8,12 +8,10 @@ public class Game implements Runnable {
 	private final int FPS_SET = 120;
 
 	public Game() {
-
 		gamePanel = new GamePanel();
 		gameWindow = new GameWindow(gamePanel);
 		gamePanel.requestFocus();
 		startGameLoop();
-
 	}
 
 	private void startGameLoop() {
@@ -46,7 +44,5 @@ public class Game implements Runnable {
 				frames = 0;
 			}
 		}
-
 	}
-
 }
